@@ -38,61 +38,37 @@ app.get("/stats", req,res) => {
 //     console.log(message);
 //   });
 
-// //stats
-// app.get("/stats", (req, res) => {
-//   db.Workout.find({})
-//   .then(dbWorkout => {
-//     res.json(dbWorkout);
-//   })
-//   .catch(err => {
-//     res.json(err);
-//   });
-// });
+app.get("/api/workout", (req, res) => {
+  db.Workout.find({})
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
 
-// app.post("/stats", ({body}, res) => {
-//   db.Workout.create(body)
-//     .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+app.post("/api/workout", (req, res) => {
+    db.Workout.create(body)
+   // .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
-// //exercise
-// app.get("/exercise", (req, res) => {
-//   db.Book.find({})
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// app.post("/exercise", ({body}, res) => {
-//   db.Workout.create(body)
-//     .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// //add to workout
-// app.get("/populated", (req, res) => {
-//   db.Workout.find({})
-//     .populate("exercise")
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+app.put("/api/workout", (req, res) => {
+  db.Workout.update(body)
+ // .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
 
 
 
