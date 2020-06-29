@@ -27,9 +27,9 @@ app.get("/", (req,res) => {
 app.get("/exercise", (req,res) => {
   res.sendFile(_dirname  + './exercise.html')
 });
-app.get("/stats", req,res) => {
-  res.sendFile(path.join(_dirname, "./pubic/stats.html"))
-};
+app.get("/stats", (req,res) => {
+  res.sendFile(_dirname  + "/stats.html")
+});
 
 
 // db.Workout.create({ name: "Fit Gym" })
