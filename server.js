@@ -21,16 +21,18 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { us
 
 //routes main
 app.get("/", (req,res) => {
-  res.sendFile(_dirname  + './index.html')
+  res.sendFile('./public/index.html')
 });
 
 app.get("/exercise", (req,res) => {
-  res.sendFile(_dirname  + './exercise.html')
+  res.sendFile('./public/exercise.html')
 });
 app.get("/stats", (req,res) => {
-  res.sendFile(_dirname  + "/stats.html")
+  res.sendFile('./public/stats.html')
 });
 
+//fetch(`/api/workouts/range`)
+//fetch("/api/workouts/" + id,
 
 // db.Workout.create({ name: "Fit Gym" })
 //   .then(dbWorkout => {  })
@@ -38,7 +40,7 @@ app.get("/stats", (req,res) => {
 //     console.log(message);
 //   });
 
-app.get("/api/workout", (req, res) => {
+app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
   .then(dbWorkout => {
     res.json(dbWorkout);
@@ -48,7 +50,7 @@ app.get("/api/workout", (req, res) => {
   });
 });
 
-app.post("/api/workout", (req, res) => {
+app.post("/api/workouts", (req, res) => {
     db.Workout.create(body)
    // .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
     .then(dbWorkout => {
@@ -59,7 +61,7 @@ app.post("/api/workout", (req, res) => {
     });
 });
 
-app.put("/api/workout", (req, res) => {
+app.put("/api/workouts", (req, res) => {
   db.Workout.update(body)
  // .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { type: _id } }, { new: true }))
   .then(dbWorkout => {
